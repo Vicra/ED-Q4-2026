@@ -7,5 +7,7 @@ int main(){
     l.insert(30);
     l.printList();
 
+    //l.pushFront(5);
+
     return 0;
 }
