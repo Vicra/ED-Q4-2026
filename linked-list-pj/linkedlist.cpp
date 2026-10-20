@@ -36,7 +36,7 @@ int LinkedList::remove(int value){
     Node* it = this->head;
     // comenzar en el segundo
     while(it != nullptr){
-        if(it->next->value == value){
+        if(it->next!=nullptr && it->next->value == value){
             Node* tmp = it->next;
 
             // alternativa 1
