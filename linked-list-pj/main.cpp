@@ -21,5 +21,23 @@ int main(){
     l.printList();
     l.remove(30);
     l.printList();
+    l.insert(40);
+    l.insert(50);
+    l.insert(60);
+    l.insert(60);
+    l.insert(70);
+    l.printList();
+    int index1 = l.search(60);
+    if(index1 >= 0)
+        cout << "Element found in index: " << index1 << endl;
+    else
+        cout << "Element not found" << endl;
     return 0;
+
+    // l.insertAt(pos, value)
+    // l.deleteAt(pos)
+    // l.deleteFront()
+    // l.deleteTail()
+    // l.size()
+    // l.empty()
 }

@@ -6,6 +6,20 @@ LinkedList::LinkedList() {
     this->tail = nullptr;
 }
 
+int LinkedList::search(int value){
+    int index = 0;
+    Node* it = this->head;
+    while(it != nullptr){
+        if(it->value == value)
+            return index;
+        else {
+            it = it->next;
+            index++; // index = index + 1
+        }
+    }
+    return -1;
+}
+
 int LinkedList::remove(int value){
     int min_val = std::numeric_limits<int>::min();
 

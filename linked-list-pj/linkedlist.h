@@ -23,6 +23,9 @@ public:
 
     // borrar el primer elemento que encuentra con ese valor, no borra duplicados
     int remove(int value);
+
+    // returns index of first element found, -1 when not found
+    int search(int value);
 };
 
 #endif // LINKEDLIST_H
