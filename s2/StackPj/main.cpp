@@ -1,19 +1,20 @@
-#include <QCoreApplication>
+#include <iostream>
+#include "stack.h"
+using std::cout;
+using std::endl;
 
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
+int main(){
+    Stack s;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.print();
+    cout << "Popped: " << s.pop() << endl;
+    s.print();
+    cout << "Peek: " << s.peek() << endl;
+    s.print();
 
-    // Set up code that uses the Qt event loop here.
-    // Call a.quit() or a.exit() to quit the application.
-    // A not very useful example would be including
-    // #include <QTimer>
-    // near the top of the file and calling
-    // QTimer::singleShot(5000, &a, &QCoreApplication::quit);
-    // which quits the application after 5 seconds.
-
-    // If you do not need a running Qt event loop, remove the call
-    // to a.exec() or use the Non-Qt Plain C++ Application template.
-
-    return a.exec();
+    s.empty();
+    s.print();
+    return 0;
 }
