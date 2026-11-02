@@ -6,6 +6,73 @@ DoubleLinkedList::DoubleLinkedList() {
     this->size = 0;
 }
 
+int DoubleLinkedList::popBack(){
+    if(this->tail == nullptr) return -1;
+    int valueToReturn = this->tail->value;
+    this->size--;
+    if(this->tail == this->head){
+        delete this->head;
+        head = nullptr;
+        tail = nullptr;
+    } else {
+        // lista contiene mas de un elemento
+        DllNode* ref = this->tail;
+        tail = tail->prev;
+        delete ref;
+        tail->next = nullptr;
+    }
+    return valueToReturn;
+}
+
+int DoubleLinkedList::remove(int val){
+    DllNode* it = this->head;
+    while(it != nullptr){
+        if(it->value == val){
+            DllNode* prev = it->prev;
+            // 1er puntero
+            prev->next = it->next;
+            if(prev->next != nullptr){
+                // 2do puntero
+                prev->next->prev = prev;
+            } else {
+                // 3er puntero
+                tail = tail->prev;
+                // misma instruccion
+                // tail = prev;
+            }
+            delete it;
+            return val;
+        } else {
+            it = it->next;
+        }
+    }
+    return -1;
+}
+
+int DoubleLinkedList::insertAfterRef(DllNode*ref, int val){
+    if (ref == nullptr) return -1;
+    // llegue aca, ref no es nullptr
+    // 1er puntero
+    DllNode* newNode = new DllNode(val);
+    newNode->prev = ref;
+
+    // 2do puntero
+    newNode->next = ref->next;
+
+    // 3er puntero
+    ref->next = newNode;
+
+    if(newNode->next != nullptr){
+        // 4to puntero
+        newNode->next->prev = newNode;
+    } else {
+        // quiero insertar despues de la cola
+        tail = newNode;
+    }
+    this->size++;
+    return val;
+}
+
 // destructor
 DoubleLinkedList::~DoubleLinkedList(){
     while(this->head != nullptr){

@@ -24,6 +24,14 @@ public:
 
     // retorna el indice donde lo encontro
     void search(int val);
+
+    int insertAfterRef(DllNode*ref, int val);
+    // retorna -1 si no lo encuentra
+    // retorn el valor si lo borro
+    int remove(int val);
+
+    int popBack();
+
 private:
     int searchMain(int val);
 };
