@@ -6,6 +6,29 @@ DoubleLinkedList::DoubleLinkedList() {
     this->size = 0;
 }
 
+int DoubleLinkedList::removeBeforeRef(DllNode*ref){
+    if(ref == nullptr || head == ref){
+        return -1;
+    }
+    this->size--;
+    // es el segundo, osea borrar la cabeza
+    if(head->next == ref){
+        int valueToReturn = head->value;
+        head = ref;
+        delete ref->prev;
+        ref->prev = nullptr;
+        return valueToReturn;
+    }else {
+        // Nodo previo
+        DllNode* prev = ref->prev;
+        int valueToReturn = prev->value;
+        ref->prev = prev->prev;
+        prev->prev->next = ref;
+        delete prev;
+        return valueToReturn;
+    }
+}
+
 int DoubleLinkedList::popBack(){
     if(this->tail == nullptr) return -1;
     int valueToReturn = this->tail->value;

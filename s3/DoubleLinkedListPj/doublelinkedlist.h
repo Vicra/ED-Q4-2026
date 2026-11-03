@@ -32,6 +32,8 @@ public:
 
     int popBack();
 
+    int removeBeforeRef(DllNode*ref);
+
 private:
     int searchMain(int val);
 };

@@ -20,7 +20,16 @@ int main(){
 
     dll.popBack();
     dll.print();
-
-
+    cout << "Remove before ref: head" << endl;
+    dll.removeBeforeRef(dll.head);
+    dll.print();
+    dll.removeBeforeRef(dll.head->next);
+    dll.print();
+    dll.pushFront(30);
+    dll.pushFront(40);
+    dll.print();
+    cout << "remove before ref tail" << endl;
+    dll.removeBeforeRef(dll.tail);
+    dll.print();
     return 0;
 }
