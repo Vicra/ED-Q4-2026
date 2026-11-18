@@ -78,7 +78,7 @@ int main() {
         {1, 0, 1, 1, 0},
         {1, 0, 1, 0, 0},
         {1, 1, 1, 1, 1}
-    }; //DRRDDDRR
+    };
 
     vector<string> paths = maze(adj);
 
