@@ -43,10 +43,10 @@ R"(cuenta,nombre,carrera,correo,edad,esBecado
     const vector<string> lines = split(csv,'\n');
     if(lines.size()>0){
         const vector<string> columns = split(lines[0], ',');
-        for(int i=1; i<lines.size(); i++){
-            const auto values = split(lines[i], ',');
+        for(int i=1; i<lines.size(); i++){ // n
+            const auto values = split(lines[i], ','); // m
             generatedJSON += "{\n";
-            for(int j=0; j<columns.size(); j++){
+            for(int j=0; j<columns.size(); j++){ // p
                 // case 1 : valor no existe
                 if(values[j] == ""){
                     continue;
