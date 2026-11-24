@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using std::cout;
 using std::endl;
 using std::vector;
+using std::string;
 
 int countDigits(int n){
     // caso base
@@ -22,11 +24,35 @@ int binarySearch(vector<int> data, int lo, int high, int x){
     }
 
     else if(x > data[mid]){
-        return binarySearch(data, lo, high, x);
+        return binarySearch(data, mid+1, high, x);
     }
     else {
-        return binarySearch(data, lo, high, x);
+        return binarySearch(data, lo, mid-1, x);
     }
+}
+
+int productDigits(int num){
+    if(num < 0){
+        num = num * -1;
+    }
+    if(num <= 9 && num>0) return num;
+    int res = num % 10;
+    return res * productDigits(num/10);
+}
+
+int sumArray(vector<int> array, int n){
+    if(n==0) return 0;
+    return array[n-1] + sumArray(array, n-1);
+}
+
+int countVowels(string s, int n){
+    if(n == 0) return 0;
+    char c = tolower(s[n-1]);
+    cout << "Processing.... [" << n << "] " << c << endl;
+    if(c == 'a' || c == 'e' || c == 'i' || c == 'o'|| c == 'u'){
+        return 1 + countVowels(s, n-1);
+    }
+    return countVowels(s, n-1);
 }
 
 int main(){
@@ -41,7 +67,16 @@ int main(){
     } else{
         cout << "Elemento encontrado en: " << indice << endl;
     }
-    return 0;
 
+    vector <int> arr = {1, 2, 3, 4, 5};
+    int suma = sumArray(arr, arr.size());
+    cout << "Summa del array es: " << suma << endl;
+
+    int cantidadVocales = countVowels("hola mundo", 10);
+    cout << "Cantidad de vocales: " << cantidadVocales << endl;
+
+    int product = productDigits(-567);
+    cout << "Product: " << product << endl;
+    return 0;
 
 }
